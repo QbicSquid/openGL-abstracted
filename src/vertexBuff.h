@@ -1,12 +1,7 @@
-#ifndef MGL_H
-#define MGL_H
+#ifndef VERTEXBUFF_H
+#define VERTEXBUFF_H
 
 unsigned int func(unsigned int elemCount, void *data);
-
-class parts
-{
-
-};
 
 class vertexBuff
 {
@@ -14,9 +9,9 @@ class vertexBuff
         unsigned int id;
     public:
         vertexBuff();
-        vertexBuff(unsigned int elemCount, float *data);
+        vertexBuff(unsigned int size, float *data);
         ~vertexBuff();
-        void fill(unsigned int elemCount, float *data);
+        void fill(unsigned int size, float *data);
         void bind();
         void unbind();
         unsigned int getId();

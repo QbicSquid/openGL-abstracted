@@ -1,6 +1,6 @@
 #include "GL/glew.h"
 #include "GLFW/glfw3.h"
-#include "mgl.h"
+#include "vertexBuff.h"
 
 unsigned int func(unsigned int elemCount, void *data)
 {
@@ -21,7 +21,6 @@ unsigned int func(unsigned int elemCount, void *data)
     return buffer;
 }
 
-
 vertexBuff::vertexBuff()
 {
     unsigned int buffer;
@@ -29,13 +28,13 @@ vertexBuff::vertexBuff()
     id = buffer;
 }
 
-vertexBuff::vertexBuff(unsigned int elemCount, float *data)
+vertexBuff::vertexBuff(unsigned int size, float *data)
 {
     unsigned int buffer;
     glCreateBuffers(1, &buffer);
     id = buffer;
 
-    fill(elemCount, data);
+    fill(size, data);
 }
 
 vertexBuff::~vertexBuff()
@@ -43,10 +42,10 @@ vertexBuff::~vertexBuff()
     glDeleteBuffers(1, &id);
 }
 
-void vertexBuff::fill(unsigned int elemCount, float *data)
+void vertexBuff::fill(unsigned int size, float *data)
 {
     glBindBuffer(GL_ARRAY_BUFFER, id);
-    glBufferData(GL_ARRAY_BUFFER, elemCount * sizeof(float), data,
+    glBufferData(GL_ARRAY_BUFFER, size, data,
                  GL_STATIC_DRAW);
 }
 
