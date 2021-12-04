@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#include "mgl.h"
+
 int main()
 {
     // initialize
@@ -24,11 +26,7 @@ int main()
         return -1;
     }
 
-    // creating buffers
-    unsigned int buffer;
-    glCreateBuffers(1, &buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, buffer);
-
+    // creating vertex buffer
     float positions[6] =
     {
         -0.5f, -0.5f,
@@ -36,8 +34,7 @@ int main()
          0.0f,  0.5f
     };
 
-    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions,
-                 GL_STATIC_DRAW);
+    vertexBuff buffer(6, positions);
 
     // enabling the vertext array element
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
