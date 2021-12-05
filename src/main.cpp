@@ -5,6 +5,7 @@
 
 #include "vertexBuff.h"
 #include "indexBuff.h"
+#include "shader.h"
 
 int main()
 {
@@ -48,6 +49,10 @@ int main()
     // enabling the vertext array element
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
     glEnableVertexAttribArray(0);
+
+    // creating shaders
+    shader shader("../res/shaders/shaders.shader");
+    shader.bind();
 
     std::cout << __LINE__ << std::endl;
 
