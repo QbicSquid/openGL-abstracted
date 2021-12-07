@@ -19,8 +19,11 @@ class shader
                 const std::string &source);
         unsigned int createShader(const std::string &vertextShader,
                 const std::string &fragmentShader);
+
     public:
         shader(std::string filepath);
+        void setUniform4f(const std::string name, float v0, float v1,
+                float v2, float v3);
         void bind();
         void unbind();
 };

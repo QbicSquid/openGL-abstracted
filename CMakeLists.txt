@@ -17,5 +17,8 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC GLEW)
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
                           "${PROJECT_SOURCE_DIR}/src")
 
-#add_subdirectory(sub_dir_to_add)
+target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC -g -finstrument-functions)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -rdynamic")
+
+#add_subdirectory(src)
 

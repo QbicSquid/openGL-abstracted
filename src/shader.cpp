@@ -104,3 +104,14 @@ void shader::unbind()
     glUseProgram(0);
 }
 
+void shader::setUniform4f(const std::string name, float v0, float v1, float v2,
+        float v3)
+{
+    unsigned int location = glGetUniformLocation(id, name.c_str());
+
+    if(location == -1)
+        std::cout << "shader/uniform not found\n";
+
+    glUniform4f(location, v0, v1, v2, v3);
+}
+

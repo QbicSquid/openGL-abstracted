@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+#include "mglErr.h"
 #include "vertexBuff.h"
 #include "indexBuff.h"
 #include "shader.h"
@@ -46,6 +47,7 @@ int main()
 
     indexBuff ibo(3, indeces);
 
+
     // enabling the vertext array element
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
     glEnableVertexAttribArray(0);
@@ -54,7 +56,8 @@ int main()
     shader shader("../res/shaders/shaders.shader");
     shader.bind();
 
-    std::cout << __LINE__ << std::endl;
+    // passing uniforms
+    shader.setUniform4f("u_color", 0.9, 0.3, 0.8, 1.0);
 
     while(!glfwWindowShouldClose(window))
     {
